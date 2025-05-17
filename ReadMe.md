@@ -107,10 +107,12 @@ systemctl restart network
 systemctl restart docker
 ```
 
-
-更新A记录*.hackyin.com(default)时出现异常
+### 更新A记录*.hackyin.com(default)时出现异常
+```
 Aliyun.Acs.Core.Exceptions.ClientException: QuotaExceeded.TTL : The specified TTL is invalid. A valid TTL must be in the range of 600 to 86400. + [ RequestId : 5431FD6F-CA4C-5624-B497-03E59CD8D9F1 ]
 stdout:    at Aliyun.Acs.Core.DefaultAcsClient.ParseAcsResponse[T](AcsRequest`1 request, HttpResponse httpResponse)
 stdout:    at Aliyun.Acs.Core.DefaultAcsClient.GetAcsResponse[T](AcsRequest`1 request)
 stdout:    at aliyun_ddns.DomainUpdater.UpdateRecord(DescribeSubDomainRecords_Record rd, String ip)
+```
+
 根据新的错误信息，问题出在 TTL（Time To Live）值无效。阿里云DNS要求TTL值必须在 600 ~ 86400秒（即10分钟~1天） 范围内，而您当前设置的TTL可能超出了这个范围。
