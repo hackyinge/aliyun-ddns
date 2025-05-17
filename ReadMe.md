@@ -20,11 +20,11 @@
 ### Docker
 ```
 docker run -d --restart=always --net=host \
-    -e "AKID=[ALIYUN's AccessKey-ID]" \
-    -e "AKSCT=[ALIYUN's AccessKey-Secret]" \
+    -e "AKID=ALIYUN's AccessKey-ID" \
+    -e "AKSCT=ALIYUN's AccessKey-Secret" \
     -e "DOMAIN=ddns.aliyun.win" \
     -e "REDO=30" \
-    -e "TTL=60" \
+    -e "TTL=600" \
     -e "TIMEZONE=8.0" \
     -e "TYPE=A" \
     swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/sanjusss/aliyun-ddns:latest
